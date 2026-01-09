@@ -363,10 +363,7 @@ async function countPropertyReferences(
     return result;
   }
 
-  const files = await vscode.workspace.findFiles(
-    new vscode.RelativePattern(workspaceFolder, '**/*.{ts,tsx}'),
-    '**/node_modules/**'
-  );
+  const files = await vscode.workspace.findFiles('**/*.{ts,tsx}', '{**/node_modules/**,**/.git/**,**/dist/**}');
 
   // 遍历每个文件统计引用
   for (const fileUri of files) {
