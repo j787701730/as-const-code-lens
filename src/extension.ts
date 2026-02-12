@@ -26,7 +26,7 @@ export function activate(context: vscode.ExtensionContext) {
   // ========== 1. 创建状态栏项 ==========
   statusBarItem = vscode.window.createStatusBarItem(
     vscode.StatusBarAlignment.Left, // 位置：右侧（Left 为左侧）
-    0 // 优先级（数值越大越靠右/左）
+    0, // 优先级（数值越大越靠右/左）
   );
 
   // ========== 2. 配置状态栏样式和内容 ==========
@@ -37,7 +37,7 @@ export function activate(context: vscode.ExtensionContext) {
 
  统计as const对象属性引用次数
     `,
-    true
+    true,
   );
 
   tooltip.isTrusted = true;
@@ -80,13 +80,13 @@ export function activate(context: vscode.ExtensionContext) {
           preview: true,
           selection: new vscode.Range(
             new vscode.Position(location.line, location.column),
-            new vscode.Position(location.line, location.column)
+            new vscode.Position(location.line, location.column),
           ),
         });
       } catch (err) {
         vscode.window.showErrorMessage(`打开失败：${err}`);
       }
-    }
+    },
   );
 
   // 注册命令：统计as const对象属性引用次数
@@ -137,7 +137,7 @@ export function activate(context: vscode.ExtensionContext) {
               }](command:as-const-code-lens.openFile?${JSON.stringify({
                 key: item.key,
                 locationKey: el.key,
-              })})${i == location.length - 1 ? '' : '\n\n --- \n\n'}`
+              })})${i == location.length - 1 ? '' : '\n\n --- \n\n'}`,
             );
           });
 
@@ -339,7 +339,7 @@ function findConstObjects(document: vscode.TextDocument): Array<{
  */
 async function countPropertyReferences(
   constObjects: Array<{ objectName: string; properties: string[]; range?: vscode.Range[] }>,
-  filePath: string
+  filePath: string,
 ): Promise<IRefCounts[]> {
   const result: IRefCounts[] = [];
 

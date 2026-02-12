@@ -2,7 +2,7 @@
   "name": "as-const-code-lens",
   "displayName": "as const code lens",
   "description": "TypeScript 对象类型 as const, 显示对象属性引用次数",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "icon": "images/icon.png",
   "engines": {
     "vscode": "^1.107.0"
@@ -20,7 +20,6 @@
     "Other"
   ],
   "activationEvents": [
-    "onStartupFinished",
     "onLanguage:typescript",
     "onLanguage:typescriptreact"
   ],
